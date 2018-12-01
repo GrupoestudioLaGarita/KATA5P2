@@ -3,10 +3,9 @@ package kata5p2.main;
 
 import java.util.List;
 import kata5p2.model.Histogram;
-import kata5p2.model.Mail;
 import kata5p2.view.HistogramDisplay;
 import kata5p2.view.MailHistogramBuilder;
-import kata5p2.view.MailListReader;
+import kata5p2.view.MailListReaderBD;
 
 public class Kata5P2 {
 
@@ -16,7 +15,7 @@ public class Kata5P2 {
     }
     
     String fileName;
-    List<Mail> mailList;
+    List<String> mailList;
     Histogram histogram;
     
     private void execute(){
@@ -27,7 +26,8 @@ public class Kata5P2 {
     
     private void input(){
         fileName = "email.txt";
-        mailList = MailListReader.Read(fileName);
+        MailListReaderBD mailReader = new MailListReaderBD();
+        mailList = mailReader.read();
     }
     
     private void process(){
